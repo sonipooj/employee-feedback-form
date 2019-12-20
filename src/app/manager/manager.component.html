@@ -1,0 +1,39 @@
+<div class="card mt-4">
+  <h4 class="card-header"><span *ngIf="users">{{currentUser.firstName}} {{currentUser.lastName}}</span></h4>
+  <div class="card-body">
+    <div class="container">
+      <h2>Manager Feedback List</h2>           
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+                      <th>Employee Id</th>  
+                      <th>Employee name</th>  
+                      <th>Project name</th> 
+                      <th>Rating</th>   
+                      <th>Comments</th>
+                      <th>mgrRating</th>  
+                      <th>mgrComments</th> 
+                      <th>Action</th> 
+                      
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of feedbackList">
+          <tr>
+                      <td>{{item.empId}}</td>  
+                      <td>{{item.empName}}</td>
+                      <td>{{item.project}}</td> 
+                      <td>{{item.rating}}</td>
+                      <td>{{item.comments}}</td>
+                      <td><input type="number"  maxlength="1" [(ngModel)]='item.mgrRating' /></td>   
+                      <td><input type="text" [(ngModel)]='item.mgrComments' /></td>  
+                      <td><span (click)="editFeedback(feedbackList,item.empId)">Edit </span>
+                        <span (click)="delete(item.empId)"><a>Delete</a></span>
+                      </td> 
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

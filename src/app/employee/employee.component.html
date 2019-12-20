@@ -1,0 +1,19 @@
+<div class="card mt-4">
+  <h4 class="card-header">
+    <span *ngIf="userFromApi">
+      Welcome {{userFromApi.firstName}} {{userFromApi.lastName}}!
+    </span>
+  </h4>
+  <div class="card-body">
+    <ul>
+      <li><a class="active" [routerLink]="['emp-feedback']">New Feedback</a>
+      </li>
+      <li> <a class="active" [routerLink]="['emp-list']" >List</a>
+      </li>
+
+    </ul>
+
+      <router-outlet></router-outlet>
+  </div>
+ 
+</div>

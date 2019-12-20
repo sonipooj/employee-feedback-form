@@ -1,0 +1,42 @@
+
+<div class="container">
+  <h2>Employee Feedback List</h2>           
+  <table class="table table-bordered" *ngIf="feedbackList?.length !==0" >
+    <thead>
+      <tr>
+                  <th>Project Name</th>  
+                  <th>Rating</th>  
+                  <th>Comments</th>  
+                  <th>mgrRating</th>  
+                  <th>mgrComments</th> 
+                  <th>Action</th> 
+                  
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of feedbackList">
+      
+      <tr>
+                  <td>{{item.project}}</td>  
+                  <td><input  *ngIf="!item.mgrRating" type="number" maxlength="1" [(ngModel)]='item.rating' />
+                  <span  *ngIf="item.mgrRating">
+                    {{item.rating}}
+                  </span>
+                  </td> 
+                  <td><input *ngIf="!item.mgrRating"  type="text" [(ngModel)]='item.comments' />
+                    <span  *ngIf="item.mgrRating">
+                      {{item.comments}}
+                    </span>
+                  </td>
+                  <td>{{item.mgrRating}}</td>   
+                  <td>{{item.mgrComments}}</td>  
+                  <td><span  *ngIf="!item.mgrRating" (click)="editFeedback(feedbackList,item.empId)"><a>Edit  </a> </span>
+                    <span  *ngIf="!item.mgrRating" (click)="delete(item.empId)"><a>Delete</a></span>
+                    <span *ngIf="item.mgrRating">Feedback Reviewed!</span>
+                  </td> 
+      </tr>
+      
+    </tbody>
+  </table>
+  <div *ngIf="feedbackList?.length === 0" class="alert alert-warning">No records found</div>
+
+</div>
